@@ -1,6 +1,11 @@
 <template>
   <div id="app">
       
+      <router-link :to="{path: '/'}">Home</router-link>
+      <router-link :to="{path: '/test'}">Test</router-link>
+      
+      <router-view></router-view>
+      <!--
       <Navbar @search='search'></Navbar>
 
       <div class="container">
@@ -11,9 +16,9 @@
             <div class="col-sm-3 card-item">
                 <Cart @removeItem='removeItem' :items="cart"></Cart>
             </div>
-        </div>
-        
+        </div>        
       </div>
+      -->
   </div>
 </template>
 
