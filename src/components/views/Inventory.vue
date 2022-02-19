@@ -1,11 +1,15 @@
 <template>
     <div v-if="!loading" class="row">
         <div v-for="(item, index) in items" :key="index" class="card" style="width: 15rem;">
-            <img :src="item.photo" class="card-img-top" alt="cart-img">
-            <div class="card-body">
-            <h5 class="card-title">{{ item.title }}</h5>
-            <p class="card-text">${{ item.price }}</p>
-            <a @click="addItemToCart(item)" class="btn btn-primary text-white">Add to Cart</a>
+            <router-link tag="div" :to="{ path: 'item/'+item.id }">
+                <img :src="item.photo" class="card-img-top" alt="cart-img">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.title }}</h5>            
+                </div>
+            </router-link>
+            <div class="card-footer">
+                <p class="card-text">${{ item.price }}</p>
+                <a @click="addItemToCart(item)" class="btn btn-primary text-white">Add to Cart</a>
             </div>
         </div>
     </div>
@@ -33,11 +37,9 @@ export default {
         },
         fetchInventory(){
             var self = this
-            axios.get('http://localhost:3000/items').then(response => {
-                setTimeout(function(){
-                    self.items = response.data
-                    self.loading = false
-                }, 3000)                
+            axios.get('http://localhost:3000/items').then(response => {                
+                self.items = response.data
+                self.loading = false                              
             })
         }
     }
