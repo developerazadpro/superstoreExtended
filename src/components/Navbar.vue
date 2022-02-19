@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">    
-      <a class="navbar-brand" href="#">Super Store</a>    
+      <router-link class="navbar-brand" :to="{path:'/'}">Super Store</router-link>    
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     data() {
       return {
@@ -25,7 +26,9 @@ export default {
     },
     methods: {
       search() {
-        this.$emit('search', this.keyword)
+        axios.get('http://localhost:3000/search/' + this.keyword).then( response => {
+           console.log(response.data)
+        })
       }
     }
 }
