@@ -1,5 +1,5 @@
 <template>
-  <h1>Hello Router</h1>
+  <h1>Item Details {{ $route.params.id }}</h1>
 </template>
 
 <script>
