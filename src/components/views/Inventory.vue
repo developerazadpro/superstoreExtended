@@ -9,7 +9,7 @@
             </router-link>
             <div class="card-footer">
                 <p class="card-text">${{ item.price }}</p>
-                <a @click="addItemToCart(item)" class="btn btn-primary text-white">Add to Cart</a>
+                <a @click="addToCart(item)" class="btn btn-primary text-white">Add to Cart</a>
             </div>
         </div>
     </div>
@@ -32,8 +32,8 @@ export default {
         this.fetchInventory()
     },
     methods:{
-        addItemToCart(item){
-            this.$emit('newItemAdded', item)
+        addToCart(item){
+            this.$store.commit('addToCart', item)
         },
         fetchInventory(){
             var self = this

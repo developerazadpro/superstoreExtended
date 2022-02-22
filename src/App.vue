@@ -14,7 +14,6 @@
         <div class="row">
             <div class="col-sm-9">
                 <router-view></router-view>
-                <!-- <Inventory @newItemAdded='addCartItem' :items="items"></Inventory> -->
             </div>
             <div class="col-sm-3 card-item">
                 <Cart @removeItem='removeItem' :items="cart"></Cart>
@@ -27,7 +26,6 @@
 
 <script>
   import Navbar from './components/Navbar'
-  //import Inventory from './components/Inventory'
   import Cart from './components/Cart'
   import data from './data.js'
 
@@ -36,7 +34,6 @@
 
     components:{
       Navbar,
-      //Inventory,
       Cart
     },
 
@@ -57,7 +54,7 @@
           return item.title.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
         })
       },
-      addCartItem(item){
+      addToCart(item){
         this.cart.push(item)
       },
       removeItem(index){
