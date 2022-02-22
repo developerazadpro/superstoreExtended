@@ -24,8 +24,12 @@ import axios from 'axios'
 export default {
     data(){
         return {
-            loading: true,
-            items: []
+            loading: true
+        }
+    },
+    computed: {
+        items() {
+            return this.$store.getters.getInventory
         }
     },
     mounted() {
@@ -38,7 +42,7 @@ export default {
         fetchInventory(){
             var self = this
             axios.get('http://localhost:3000/items').then(response => {                
-                self.items = response.data
+                self.$store.commit('setInventory', response.data)
                 self.loading = false                              
             })
         }
